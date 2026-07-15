@@ -75,7 +75,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
         -Wincomplete-module
         -Winconsistent-missing-destructor-override
         -Winvalid-or-nonexistent-directory
-        -Wlocal-type-template-args
         -Wloop-analysis
         -Wmain
         -Wmain-return-type
