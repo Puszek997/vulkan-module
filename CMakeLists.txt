@@ -62,9 +62,9 @@ include(CompileWarnings)
 target_compile_options(
     ${PROJECT_NAME}
     PRIVATE
+    ${compile_definitions}
     ${compile_flags}
     ${compile_warnings}
-    ${compile_definitions}
 )
 
 target_compile_definitions(
