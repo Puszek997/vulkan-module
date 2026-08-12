@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 4.4.2)
 
-list(PREPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-
 project(
     vulkan-module
     VERSION      0.1.0
@@ -56,9 +54,6 @@ target_sources(
         ${Vulkan_INCLUDE_DIR}/vulkan/vulkan_video.cppm
 )
 
-include(CompileDefinitions)
-include(CompileFlags)
-include(CompileWarnings)
 target_compile_options(
     ${PROJECT_NAME}
     PRIVATE
