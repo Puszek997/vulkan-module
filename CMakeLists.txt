@@ -11,7 +11,7 @@ project(
     LANGUAGES    CXX
 )
 
-find_package(Vulkan 1.4.350 REQUIRED)
+find_package(Vulkan 1.4.357 REQUIRED)
 
 add_library(${PROJECT_NAME})
 
