@@ -9,6 +9,27 @@ project(
     LANGUAGES    CXX
 )
 
+set(
+    CACHE{VULKAN_MODULE_DEFINITIONS}
+    TYPE STRING
+    HELP "Definitions used by compiler during build"
+    VALUE
+)
+
+set(
+    CACHE{VULKAN_MODULE_FLAGS}
+    TYPE STRING
+    HELP "Flags used by compiler during build"
+    VALUE
+)
+
+set(
+    CACHE{VULKAN_MODULE_WARNINGS}
+    TYPE STRING
+    HELP "Warnings used by compiler during build"
+    VALUE
+)
+
 find_package(Vulkan 1.4.357 REQUIRED)
 
 add_library(${PROJECT_NAME})
@@ -57,9 +78,9 @@ target_sources(
 target_compile_options(
     ${PROJECT_NAME}
     PRIVATE
-    ${compile_definitions}
-    ${compile_flags}
-    ${compile_warnings}
+    ${VULKAN_MODULE_DEFINITIONS}
+    ${VULKAN_MODULE_FLAGS}
+    ${VULKAN_MODULE_WARNINGS}
 )
 
 target_compile_definitions(
