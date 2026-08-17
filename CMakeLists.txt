@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 4.4.2)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 project(
     vulkan-module
     VERSION      0.1.0
@@ -9,34 +11,18 @@ project(
     LANGUAGES    CXX
 )
 
-set(
-    CACHE{VULKAN_MODULE_DEFINITIONS}
-    TYPE STRING
-    HELP "Definitions used by compiler during build"
-    VALUE
-)
-
-set(
-    CACHE{VULKAN_MODULE_FLAGS}
-    TYPE STRING
-    HELP "Flags used by compiler during build"
-    VALUE
-)
-
-set(
-    CACHE{VULKAN_MODULE_WARNINGS}
-    TYPE STRING
-    HELP "Warnings used by compiler during build"
-    VALUE
-)
+include(SlangModuleSetOption)
+vulkan_module_set_option(VULKAN_MODULE_DEFINITIONS "" STRING "Definitions used by compiler during build")
+vulkan_module_set_option(VULKAN_MODULE_FLAGS "" STRING "Flags used by compiler during build")
+vulkan_module_set_option(VULKAN_MODULE_WARNINGS "" STRING "Warnings used by compiler during build")
 
 find_package(Vulkan 1.4.357 REQUIRED)
 
 add_library(${PROJECT_NAME})
 
 include(CheckIPOSupported)
-check_ipo_supported(RESULT result OUTPUT ipo_output LANGUAGES CXX)
-if(result)
+check_ipo_supported(RESULT IPO_RESULT OUTPUT IPO_OUTPUT LANGUAGES CXX)
+if(IPO_RESULT)
     set_property(
         TARGET
         ${PROJECT_NAME}
@@ -46,7 +32,7 @@ if(result)
 else()
     message(
         WARNING
-        "IPO is not supported: ${ipo_output}"
+        "IPO is not supported: ${IPO_OUTPUT}"
         "IPO link options will not be passed to linker"
     )
 endif()
