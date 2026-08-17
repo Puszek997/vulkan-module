@@ -11,7 +11,7 @@ project(
     LANGUAGES    CXX
 )
 
-include(SlangModuleSetOption)
+include(VulkanModuleSetOption)
 vulkan_module_set_option(VULKAN_MODULE_DEFINITIONS "" STRING "Definitions used by compiler during build")
 vulkan_module_set_option(VULKAN_MODULE_FLAGS "" STRING "Flags used by compiler during build")
 vulkan_module_set_option(VULKAN_MODULE_WARNINGS "" STRING "Warnings used by compiler during build")
